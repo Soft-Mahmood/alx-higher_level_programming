@@ -13,6 +13,8 @@ class Rectangle:
         width: the shorter side
         height: the longer side
     """
+    number_of_instances = 0
+
     def __init__(self, width = 0, height = 0):
         """
         initialises the rectangle
@@ -22,6 +24,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -60,3 +63,39 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
+    def area(self):
+        """ Calculates the area of the rectangle """
+        return self.__height * self.__width
+
+    def perimeter(self):
+        """ Calculates the perimeter of the rectangle """
+        if self.__width == 0 or self.__height == 0:
+            return 0
+        return (self.__height + self.__width) * 2
+
+    def __str__(self):
+        """
+        Makes a nicely printable string 
+        whenever the class is passed into print
+
+        Returns:
+            The string
+        """
+        ch = ""
+        if self.__width == 0 or self.__height == 0:
+            return ch
+        for i in range(self.__height):
+            for j in range(self.__width):
+                ch += "#"
+            ch += '\n'
+        return ch[:-1]
+
+    def __repr__(self):
+        """ returns a string similr to that for making new objects """
+        return "Rectangle({}, {})".format(self.__width, self.__height)
+
+    def __del__(self):
+        """ called before deletion """
+        Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")
