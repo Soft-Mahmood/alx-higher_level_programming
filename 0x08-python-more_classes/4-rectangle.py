@@ -44,7 +44,7 @@ class Rectangle:
         if type(value) is not int:
             raise TypeError("width must be an integer")
         if value < 0:
-            raise ValueError("width must be >= 0")
+            raise TypeError("width must be >= 0")
         self.__width = value
 
     @height.setter
@@ -58,7 +58,7 @@ class Rectangle:
         if type(value) is not int:
             raise TypeError("height must be an integer")
         if value < 0:
-            raise ValueError("height must be >= 0")
+            raise TypeError("height must be >= 0")
         self.__height = value
 
     def area(self):
@@ -70,3 +70,24 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return 0
         return (self.__height + self.__width) * 2
+
+    def __str__(self):
+        """
+        Makes a nicely printable string 
+        whenever the class is passed into print
+
+        Returns:
+            The string
+        """
+        ch = ""
+        if self.__width == 0 or self.__height == 0:
+            return ch
+        for i in range(self.__height):
+            for j in range(self.__width):
+                ch += "#"
+            ch += '\n'
+        return ch[:-1]
+
+    def __repr__(self):
+        """ returns a string similr to that for making new objects """
+        return "Rectangle({}, {})".format(self.__width, self.__height)
