@@ -1,3 +1,1 @@
-This directory is for the input output tasks
-
-Enjoy!!!
+python input/output, reading and writing to files, JSON...
