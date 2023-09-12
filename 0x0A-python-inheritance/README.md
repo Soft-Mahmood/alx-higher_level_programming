@@ -1,1 +1,3 @@
-inheritance in python
+This directory is for the inheritance tasks
+
+Enjoy!!!
