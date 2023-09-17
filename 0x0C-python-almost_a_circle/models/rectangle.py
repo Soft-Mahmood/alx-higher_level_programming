@@ -11,6 +11,19 @@ class Rectangle(Base):
     """
     Rectangle inherits from Base.
 
+    Methods:
+        __init__(self, width, height, x=0, y=0, id=None)
+        width(self)
+        width(self, value)
+        height(self)
+        height(self, value)
+        x(self)
+        x(self, value)
+        y(self)
+        y(self, value)
+        area(self)
+        display(self)
+
     Attributes:
         id: class id
     """
@@ -141,15 +154,12 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
-        """ prints the rectangle in stdout with '#' """
-        for i in range(self.__y):
-            print()
-        for i in range(self.__height):
-            for x in range(self.__x):
-                print(" ", end="")
-            for j in range(self.__width):
-                print('#', end="")
-            print()
+        """
+        Prints the rectangle with #
+        """
+        print("\n" * self.__y +
+              "\n".join(" " * self.__x + "#" * self.__width
+                        for i in range(self.height)))
 
     def __str__(self):
         """ string respresentation of the object """
@@ -180,3 +190,15 @@ class Rectangle(Base):
         else:
             for k, v in kwargs.items():
                 setattr(self, k, v)
+
+    def to_dictionary(self):
+        """
+        Retunrs dictionary representation of Rectangle
+        """
+        r = {}
+        r["id"] = self.id
+        r["width"] = self.width
+        r["height"] = self.height
+        r["x"] = self.x
+        r["y"] = self.y
+        return r
