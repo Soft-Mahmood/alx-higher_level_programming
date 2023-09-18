@@ -15,7 +15,7 @@ class Square(Rectangle):
     """
     def __init__(self, size, x=0, y=0, id=None):
         """ initialising the class """
-        Rectangle.__init__(size, size, x, y, id)
+        Rectangle.__init__(self, size, size, x, y, id)
         self.size = size
 
     @property
